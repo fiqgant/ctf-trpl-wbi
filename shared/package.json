@@ -1,0 +1,13 @@
+{
+  "name": "@ctf/shared",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "src/index.ts",
+  "exports": {
+    ".": "./src/index.ts",
+    "./flag": "./src/flag.ts",
+    "./ratelimit": "./src/ratelimit.ts",
+    "./crypto": "./src/crypto.ts",
+    "./types": "./src/types.ts"
+  }
+}

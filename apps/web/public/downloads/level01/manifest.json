@@ -1,0 +1,5 @@
+{
+  "level": "L01",
+  "answerEncoding": "base64(reverse(rot13(text)))",
+  "flagCommitment": "a5dea69d3f55a74c4613bb70e3c5cb194300a5b0f3767955d8296fcbe820b901"
+}

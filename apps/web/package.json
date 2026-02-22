@@ -1,0 +1,13 @@
+{
+  "name": "@ctf/web",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "http-server public -p 8788 -c-1",
+    "build": "echo static-site"
+  },
+  "devDependencies": {
+    "http-server": "^14.1.1"
+  }
+}

@@ -1,0 +1,11 @@
+node_modules/
+.vercel/
+dist/
+*.log
+.env
+.env.local
+.env.*.local
+
+# Hide author-only writeups from commits/deploy context
+levels/**/hints.md
+levels/**/solution.md

@@ -1,0 +1,18 @@
+{
+  "name": "ctf-ts",
+  "private": true,
+  "version": "1.0.0",
+  "description": "University CTF monorepo in TypeScript for Vercel (static + API functions)",
+  "packageManager": "pnpm@10.6.0",
+  "scripts": {
+    "build:all": "npx --yes tsx scripts/build-all.ts",
+    "dev": "npx --yes vercel dev --listen 3000",
+    "start": "npm run dev",
+    "typecheck": "npx --yes tsc --noEmit -p tsconfig.json"
+  },
+  "devDependencies": {
+    "assemblyscript": "^0.28.8",
+    "tsx": "^4.19.3",
+    "typescript": "^5.7.3"
+  }
+}

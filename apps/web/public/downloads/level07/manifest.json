@@ -1,0 +1,5 @@
+{
+  "level": "L07",
+  "method": "xor-keystream-reuse",
+  "flagCommitment": "7b01e514196cdc83dc2d67baaacc123d987d55c079522262b7402ada7e96acd2"
+}

@@ -1,0 +1,16 @@
+{
+  "rewrites": [
+    {
+      "source": "/",
+      "destination": "/apps/web/public/index.html"
+    },
+    {
+      "source": "/challenges/:path*",
+      "destination": "/apps/web/public/challenges/:path*"
+    },
+    {
+      "source": "/downloads/:path*",
+      "destination": "/apps/web/public/downloads/:path*"
+    }
+  ]
+}

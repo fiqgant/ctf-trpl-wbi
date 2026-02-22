@@ -1,0 +1,8 @@
+{
+  "extends": "./tsconfig.base.json",
+  "compilerOptions": {
+    "moduleResolution": "Bundler",
+    "lib": ["ES2022", "DOM", "DOM.Iterable"]
+  },
+  "include": ["api/**/*.ts", "apps/**/*.ts", "shared/**/*.ts", "scripts/**/*.ts", "levels/**/*.ts"]
+}

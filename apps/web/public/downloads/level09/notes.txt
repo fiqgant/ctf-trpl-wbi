@@ -1,0 +1,3 @@
+Firmware target: wasm32
+Exported function: validate(input: string) -> i32
+sha256=65b5080d77dc9c549a65ef900b5eb3efe7863c1acfdebe6edd47a6e3426e6ef5

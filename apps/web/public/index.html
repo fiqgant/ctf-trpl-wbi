@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CTF TRPL WBI</title>
+    <style>
+      :root {
+        --bg: #f4f7fb;
+        --fg: #0f172a;
+        --panel: #ffffff;
+        --accent: #0b6e4f;
+        --muted: #475569;
+      }
+      body {
+        margin: 0;
+        font-family: "IBM Plex Sans", "Segoe UI", sans-serif;
+        color: var(--fg);
+        background:
+          radial-gradient(circle at 10% 20%, #d9f7e7, transparent 40%),
+          radial-gradient(circle at 90% 10%, #dbeafe, transparent 45%),
+          var(--bg);
+      }
+      main {
+        max-width: 980px;
+        margin: 0 auto;
+        padding: 2rem 1rem 4rem;
+      }
+      h1 {
+        margin-bottom: 0.4rem;
+      }
+      p {
+        color: var(--muted);
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        background: var(--panel);
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 10px 28px rgba(15, 23, 42, 0.08);
+      }
+      th,
+      td {
+        text-align: left;
+        border-bottom: 1px solid #e2e8f0;
+        padding: 0.75rem;
+      }
+      th {
+        background: #ecfeff;
+      }
+      code {
+        background: #e2e8f0;
+        padding: 0.1rem 0.3rem;
+        border-radius: 5px;
+      }
+      .badge {
+        border-radius: 999px;
+        padding: 0.15rem 0.5rem;
+        background: #dcfce7;
+        color: #14532d;
+        font-size: 0.8rem;
+      }
+      .api {
+        margin-top: 1.5rem;
+        background: var(--panel);
+        border-radius: 12px;
+        padding: 1rem;
+        box-shadow: 0 10px 28px rgba(15, 23, 42, 0.08);
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>CTF TRPL WBI</h1>
+      <p>
+        Static challenge hub hosted on Vercel. Open each challenge in
+        a new tab, download artifacts, and use the API endpoints for online
+        levels.
+      </p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Level</th>
+            <th>Difficulty</th>
+            <th>Category</th>
+            <th>Challenge</th>
+            <th>Offline Downloads</th>
+            <th>Online API</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>01</td>
+            <td><span class="badge">Easy</span></td>
+            <td>Misc / Encoding</td>
+            <td><a href="challenges/level01.html" target="_blank" rel="noopener noreferrer">Open</a></td>
+            <td><a href="downloads/level01/brief.txt">brief.txt</a></td>
+            <td>-</td>
+          </tr>
+          <tr>
+            <td>02</td>
+            <td><span class="badge">Easy</span></td>
+            <td>Web logic</td>
+            <td><a href="challenges/level02.html" target="_blank" rel="noopener noreferrer">Open</a></td>
+            <td>-</td>
+            <td><code>/api/level02</code></td>
+          </tr>
+          <tr>
+            <td>03</td>
+            <td><span class="badge">Easy</span></td>
+            <td>Forensics</td>
+            <td><a href="challenges/level03.html" target="_blank" rel="noopener noreferrer">Open</a></td>
+            <td><a href="downloads/level03/incident.log">incident.log</a></td>
+            <td>-</td>
+          </tr>
+          <tr>
+            <td>04</td>
+            <td><span class="badge">Medium</span></td>
+            <td>Authorization</td>
+            <td><a href="challenges/level04.html" target="_blank" rel="noopener noreferrer">Open</a></td>
+            <td>-</td>
+            <td><code>/api/level04</code></td>
+          </tr>
+          <tr>
+            <td>05</td>
+            <td><span class="badge">Medium</span></td>
+            <td>Crypto</td>
+            <td><a href="challenges/level05.html" target="_blank" rel="noopener noreferrer">Open</a></td>
+            <td>-</td>
+            <td><code>/api/level05</code></td>
+          </tr>
+          <tr>
+            <td>06</td>
+            <td><span class="badge">Medium</span></td>
+            <td>Reverse (WASM)</td>
+            <td><a href="challenges/level06.html" target="_blank" rel="noopener noreferrer">Open</a></td>
+            <td><a href="downloads/level06/level06.wasm">level06.wasm</a></td>
+            <td>-</td>
+          </tr>
+          <tr>
+            <td>07</td>
+            <td><span class="badge">Hard</span></td>
+            <td>Crypto / File analysis</td>
+            <td><a href="challenges/level07.html" target="_blank" rel="noopener noreferrer">Open</a></td>
+            <td><a href="downloads/level07/packets.json">packets.json</a></td>
+            <td>-</td>
+          </tr>
+          <tr>
+            <td>08</td>
+            <td><span class="badge">Hard</span></td>
+            <td>Web + Forensics</td>
+            <td><a href="challenges/level08.html" target="_blank" rel="noopener noreferrer">Open</a></td>
+            <td>-</td>
+            <td><code>/api/level08</code></td>
+          </tr>
+          <tr>
+            <td>09</td>
+            <td><span class="badge">Very Hard</span></td>
+            <td>Reverse (WASM)</td>
+            <td><a href="challenges/level09.html" target="_blank" rel="noopener noreferrer">Open</a></td>
+            <td><a href="downloads/level09/level09.wasm">level09.wasm</a></td>
+            <td>-</td>
+          </tr>
+          <tr>
+            <td>10</td>
+            <td><span class="badge">Very Hard</span></td>
+            <td>Multi-step chain</td>
+            <td><a href="challenges/level10.html" target="_blank" rel="noopener noreferrer">Open</a></td>
+            <td>-</td>
+            <td><code>/api/level10</code></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <section class="api">
+        <h2>API Test Quickstart</h2>
+        <pre><code>curl https://ctf-trpl-wbi.vercel.app/api/level02
+curl https://ctf-trpl-wbi.vercel.app/api/level04/token
+curl "https://ctf-trpl-wbi.vercel.app/api/level05/oracle?plain=AAAA"
+curl https://ctf-trpl-wbi.vercel.app/api/level08/logs?page=1 -H "x-audit-mode: enabled"
+curl https://ctf-trpl-wbi.vercel.app/api/level10</code></pre>
+      </section>
+    </main>
+  </body>
+</html>

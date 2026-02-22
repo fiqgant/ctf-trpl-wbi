@@ -1,0 +1,5 @@
+{
+  "knownPlain": "attendance=present;room=E2;",
+  "knownCipherHex": "7b5f4828300b16e6fa6597cbbeb89d9a7e5509313b0a1bba5f1907",
+  "targetCipherHex": "7c42522c32301cede03dd9cfadaf82967749466e380414aa2e19113a3c06"
+}

@@ -1,0 +1,3 @@
+Training build target: wasm32
+Exported function: validate(input: string) -> i32
+sha256=538f7f01d8960bfd40fe89a9f283b09fd1ce6ad5e8246aeabc9d70c69963c62d
