@@ -75,3 +75,11 @@ pnpm exec vercel --prod
 - Keep one stable salt for one event run.
 - Never commit real answer env values to git.
 - Rate limits are in-memory and sufficient for educational challenge traffic.
+
+## 7) Web Analytics
+This project uses static HTML, so Vercel Web Analytics is enabled via:
+
+`<script defer src="/_vercel/insights/script.js"></script>`
+
+The script is already added to `apps/web/public/index.html` and all challenge pages.
+After deploy, open the site and navigate across pages. Data usually appears within ~30 seconds in Vercel Analytics.
