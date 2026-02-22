@@ -22,11 +22,11 @@
         <h1>Level 05 - Reused Stream Key</h1>
         <p class="meta">Category: Crypto | Difficulty: Medium</p>
         <p>A toy XOR stream cipher setup reuses key material across requests.</p>
-        <p><strong>What participants receive:</strong> <code>/api/level05</code>, <code>/api/level05/oracle?plain=...</code>, <code>/api/level05/submit</code></p>
+        <p><strong>What participants receive:</strong> <code>/api/level05</code>, <code>/api/level05/oracle?plain=...</code> or <code>/api/level05?action=oracle&plain=...</code>, <code>/api/level05/submit</code> or <code>/api/level05?action=submit</code></p>
         <p><strong>Objective:</strong> Recover the plaintext behind <code>secretCipherHex</code> and submit it.</p>
         <pre><code>curl https://ctf-trpl-wbi.vercel.app/api/level05
-curl "https://ctf-trpl-wbi.vercel.app/api/level05/oracle?plain=AAAAAAAAAA"
-curl -X POST https://ctf-trpl-wbi.vercel.app/api/level05/submit \
+curl "https://ctf-trpl-wbi.vercel.app/api/level05?action=oracle&plain=AAAAAAAAAA"
+curl -X POST "https://ctf-trpl-wbi.vercel.app/api/level05?action=submit" \
   -H "content-type: application/json" \
   -d '{"secret":"&lt;your-answer&gt;"}'</code></pre>
       </section>

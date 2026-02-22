@@ -6,8 +6,8 @@
 ## What participants receive
 - Online endpoints:
   - `GET /api/level05`
-  - `GET /api/level05/oracle?plain=...`
-  - `POST /api/level05/submit`
+  - `GET /api/level05/oracle?plain=...` or `GET /api/level05?action=oracle&plain=...`
+  - `POST /api/level05/submit` or `POST /api/level05?action=submit`
 
 ## Objective
 Recover the plaintext behind `secretCipherHex` and submit it.
@@ -15,8 +15,8 @@ Recover the plaintext behind `secretCipherHex` and submit it.
 ## Test with curl
 ```bash
 curl https://ctf-trpl-wbi.vercel.app/api/level05
-curl "https://ctf-trpl-wbi.vercel.app/api/level05/oracle?plain=AAAAAAAAAA"
-curl -X POST https://ctf-trpl-wbi.vercel.app/api/level05/submit \
+curl "https://ctf-trpl-wbi.vercel.app/api/level05?action=oracle&plain=AAAAAAAAAA"
+curl -X POST "https://ctf-trpl-wbi.vercel.app/api/level05?action=submit" \
   -H "content-type: application/json" \
   -d '{"secret":"<your-answer>"}'
 ```

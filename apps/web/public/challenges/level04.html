@@ -22,11 +22,11 @@
         <h1>Level 04 - Unsigned Campus Ticket</h1>
         <p class="meta">Category: Web logic, Authorization | Difficulty: Medium</p>
         <p>A toy ticket format is parsed without proper signature validation.</p>
-        <p><strong>What participants receive:</strong> <code>/api/level04</code>, <code>/api/level04/token</code>, <code>/api/level04/submit</code></p>
+        <p><strong>What participants receive:</strong> <code>/api/level04</code>, <code>/api/level04/token</code> or <code>/api/level04?action=token</code>, <code>/api/level04/submit</code> or <code>/api/level04?action=submit</code></p>
         <p><strong>Objective:</strong> Escalate a training ticket to maintainer privilege and obtain the flag.</p>
         <pre><code>curl https://ctf-trpl-wbi.vercel.app/api/level04
-curl https://ctf-trpl-wbi.vercel.app/api/level04/token
-curl -X POST https://ctf-trpl-wbi.vercel.app/api/level04/submit \
+curl "https://ctf-trpl-wbi.vercel.app/api/level04?action=token"
+curl -X POST "https://ctf-trpl-wbi.vercel.app/api/level04?action=submit" \
   -H "content-type: application/json" \
   -d '{"token":"&lt;edited-token&gt;"}'</code></pre>
       </section>

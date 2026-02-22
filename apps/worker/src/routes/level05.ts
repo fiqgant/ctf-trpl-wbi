@@ -40,6 +40,7 @@ export async function handleLevel05(
   _ctx: unknown,
   url: URL
 ): Promise<Response> {
+  const action = (url.searchParams.get('action') ?? '').toLowerCase();
   const secretPlainText = env.L05_EXPECTED_ANSWER;
   const client = getClientIdentifier(request);
   const rate = consumeRateLimit(`level05:${client}`, 18, 60_000);
@@ -49,7 +50,7 @@ export async function handleLevel05(
     return json({ error: 'rate_limited', detail: 'Too many requests for level05' }, 429, headers);
   }
 
-  if (request.method === 'GET' && url.pathname === '/api/level05') {
+  if (request.method === 'GET' && url.pathname === '/api/level05' && action !== 'oracle') {
     const secretCipherHex = await encryptWithLevelKey(secretPlainText, env.CTF_FLAG_SALT);
     return json(
       {
@@ -58,6 +59,7 @@ export async function handleLevel05(
         objective: 'Recover the plaintext used to create secretCipherHex.',
         secretCipherHex,
         oracleEndpoint: '/api/level05/oracle?plain=<text>',
+        oracleEndpointCompat: '/api/level05?action=oracle&plain=<text>',
         submitEndpoint: '/api/level05/submit'
       },
       200,
@@ -65,7 +67,7 @@ export async function handleLevel05(
     );
   }
 
-  if (request.method === 'GET' && url.pathname === '/api/level05/oracle') {
+  if (request.method === 'GET' && (url.pathname === '/api/level05/oracle' || action === 'oracle')) {
     const plain = url.searchParams.get('plain') ?? '';
     if (!plain) {
       return json({ error: 'missing_plain' }, 400, headers);
@@ -78,7 +80,7 @@ export async function handleLevel05(
     return json({ plainLength: plain.length, cipherHex }, 200, headers);
   }
 
-  if (request.method === 'POST' && url.pathname === '/api/level05/submit') {
+  if (request.method === 'POST' && (url.pathname === '/api/level05/submit' || action === 'submit')) {
     let secret = '';
     try {
       const body = (await request.json()) as { secret?: string };

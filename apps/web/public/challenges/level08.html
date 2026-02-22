@@ -22,13 +22,13 @@
         <h1>Level 08 - Audit Log Fragments</h1>
         <p class="meta">Category: Web logic, Forensics | Difficulty: Hard</p>
         <p>Audit logs are segmented and partially redacted depending on request context.</p>
-        <p><strong>What participants receive:</strong> <code>/api/level08</code>, <code>/api/level08/logs?page=1..4</code>, <code>/api/level08/submit</code></p>
+        <p><strong>What participants receive:</strong> <code>/api/level08</code>, <code>/api/level08/logs?page=1..4</code> or <code>/api/level08?action=logs&page=1..4</code>, <code>/api/level08/submit</code> or <code>/api/level08?action=submit</code></p>
         <p><strong>Objective:</strong> Collect hidden fragments, decode them, and submit the reconstructed phrase.</p>
         <pre><code>curl https://ctf-trpl-wbi.vercel.app/api/level08
-curl "https://ctf-trpl-wbi.vercel.app/api/level08/logs?page=1"
-curl "https://ctf-trpl-wbi.vercel.app/api/level08/logs?page=1" -H "x-audit-mode: enabled"
-curl "https://ctf-trpl-wbi.vercel.app/api/level08/logs?page=4" -H "x-audit-mode: enabled"
-curl -X POST https://ctf-trpl-wbi.vercel.app/api/level08/submit \
+curl "https://ctf-trpl-wbi.vercel.app/api/level08?action=logs&page=1"
+curl "https://ctf-trpl-wbi.vercel.app/api/level08?action=logs&page=1" -H "x-audit-mode: enabled"
+curl "https://ctf-trpl-wbi.vercel.app/api/level08?action=logs&page=4" -H "x-audit-mode: enabled"
+curl -X POST "https://ctf-trpl-wbi.vercel.app/api/level08?action=submit" \
   -H "content-type: application/json" \
   -d '{"answer":"&lt;your-answer&gt;"}'</code></pre>
       </section>

@@ -38,6 +38,7 @@ export async function handleLevel04(
   _ctx: unknown,
   url: URL
 ): Promise<Response> {
+  const action = (url.searchParams.get('action') ?? '').toLowerCase();
   const client = getClientIdentifier(request);
   const rate = consumeRateLimit(`level04:${client}`, 15, 60_000);
   const headers = rateLimitHeaders(rate);
@@ -47,7 +48,7 @@ export async function handleLevel04(
   }
 
   if (request.method === 'GET') {
-    if (url.pathname.endsWith('/token')) {
+    if (url.pathname.endsWith('/token') || action === 'token') {
       return json({ token: issueUnsignedTicket() }, 200, headers);
     }
 
@@ -57,6 +58,7 @@ export async function handleLevel04(
         category: ['Web Logic', 'Authorization'],
         objective: 'Obtain maintainer scope and submit the token.',
         tokenEndpoint: '/api/level04/token',
+        tokenEndpointCompat: '/api/level04?action=token',
         submitEndpoint: '/api/level04/submit'
       },
       200,
@@ -64,7 +66,7 @@ export async function handleLevel04(
     );
   }
 
-  if (request.method === 'POST' && url.pathname.endsWith('/submit')) {
+  if (request.method === 'POST' && (url.pathname.endsWith('/submit') || action === 'submit')) {
     let ticket = '';
     try {
       const body = (await request.json()) as { token?: string };

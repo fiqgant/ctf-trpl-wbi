@@ -42,6 +42,7 @@ export async function handleLevel10(
   _ctx: unknown,
   url: URL
 ): Promise<Response> {
+  const action = (url.searchParams.get('action') ?? '').toLowerCase();
   const expectedAnswer = env.L10_EXPECTED_ANSWER.trim().toLowerCase();
   const client = getClientIdentifier(request);
   const rate = consumeRateLimit(`level10:${client}`, 10, 60_000);
@@ -51,7 +52,7 @@ export async function handleLevel10(
     return json({ error: 'rate_limited', detail: 'Too many requests for level10' }, 429, headers);
   }
 
-  if (request.method === 'GET' && url.pathname === '/api/level10') {
+  if (request.method === 'GET' && url.pathname === '/api/level10' && action !== 'pieces') {
     return json(
       {
         level: 'L10',
@@ -61,6 +62,7 @@ export async function handleLevel10(
           noteBase64: 'VXNlIC9hcGkvbGV2ZWwxMC9waWVjZXMgd2l0aCBhbiBhdWRpdCB0aWNrZXQu',
           ticket: bootstrapTicket()
         },
+        piecesEndpointCompat: '/api/level10?action=pieces&ticket=<edited-ticket>',
         submitEndpoint: '/api/level10/submit'
       },
       200,
@@ -68,7 +70,7 @@ export async function handleLevel10(
     );
   }
 
-  if (request.method === 'GET' && url.pathname === '/api/level10/pieces') {
+  if (request.method === 'GET' && (url.pathname === '/api/level10/pieces' || action === 'pieces')) {
     const ticket = url.searchParams.get('ticket') ?? '';
     if (!ticket) {
       return json({ error: 'missing_ticket' }, 400, headers);
@@ -99,7 +101,7 @@ export async function handleLevel10(
     });
   }
 
-  if (request.method === 'POST' && url.pathname === '/api/level10/submit') {
+  if (request.method === 'POST' && (url.pathname === '/api/level10/submit' || action === 'submit')) {
     let answer = '';
     try {
       const body = (await request.json()) as { answer?: string };

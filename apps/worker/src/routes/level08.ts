@@ -29,6 +29,7 @@ export async function handleLevel08(
   _ctx: unknown,
   url: URL
 ): Promise<Response> {
+  const action = (url.searchParams.get('action') ?? '').toLowerCase();
   const expectedAnswer = env.L08_EXPECTED_ANSWER.trim().toLowerCase();
   const client = getClientIdentifier(request);
   const rate = consumeRateLimit(`level08:${client}`, 12, 60_000);
@@ -38,13 +39,14 @@ export async function handleLevel08(
     return json({ error: 'rate_limited', detail: 'Too many requests for level08' }, 429, headers);
   }
 
-  if (request.method === 'GET' && url.pathname === '/api/level08') {
+  if (request.method === 'GET' && url.pathname === '/api/level08' && action !== 'logs') {
     return json(
       {
         level: 'L08',
         category: ['Web Logic', 'Forensics'],
         objective: 'Recover the phrase from segmented logs.',
         hint: 'Read /api/level08/logs?page=1..4. Internal audit mode reveals full values.',
+        logsEndpointCompat: '/api/level08?action=logs&page=1',
         submitEndpoint: '/api/level08/submit'
       },
       200,
@@ -52,7 +54,7 @@ export async function handleLevel08(
     );
   }
 
-  if (request.method === 'GET' && url.pathname === '/api/level08/logs') {
+  if (request.method === 'GET' && (url.pathname === '/api/level08/logs' || action === 'logs')) {
     const page = url.searchParams.get('page') ?? '1';
     const record = rawPages[page];
 
@@ -80,7 +82,7 @@ export async function handleLevel08(
     return json({ page, log: record }, 200, headers);
   }
 
-  if (request.method === 'POST' && url.pathname === '/api/level08/submit') {
+  if (request.method === 'POST' && (url.pathname === '/api/level08/submit' || action === 'submit')) {
     let answer = '';
     try {
       const body = (await request.json()) as { answer?: string };

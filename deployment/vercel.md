@@ -39,9 +39,9 @@ API checks:
 ```bash
 curl http://localhost:3000/api/health
 curl http://localhost:3000/api/level02
-curl http://localhost:3000/api/level04/token
-curl "http://localhost:3000/api/level05/oracle?plain=AAAA"
-curl http://localhost:3000/api/level08/logs?page=1 -H "x-audit-mode: enabled"
+curl "http://localhost:3000/api/level04?action=token"
+curl "http://localhost:3000/api/level05?action=oracle&plain=AAAA"
+curl "http://localhost:3000/api/level08?action=logs&page=1" -H "x-audit-mode: enabled"
 curl http://localhost:3000/api/level10
 ```
 

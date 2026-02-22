@@ -22,11 +22,11 @@
         <h1>Level 10 - Registrar Chain of Custody</h1>
         <p class="meta">Category: Multi-step chaining, Web logic, Crypto, Forensics | Difficulty: Very Hard</p>
         <p>The final level chains multiple toy flaws and encoding steps into one deterministic puzzle path.</p>
-        <p><strong>What participants receive:</strong> <code>/api/level10</code>, <code>/api/level10/pieces?ticket=...</code>, <code>/api/level10/submit</code></p>
+        <p><strong>What participants receive:</strong> <code>/api/level10</code>, <code>/api/level10/pieces?ticket=...</code> or <code>/api/level10?action=pieces&ticket=...</code>, <code>/api/level10/submit</code> or <code>/api/level10?action=submit</code></p>
         <p><strong>Objective:</strong> Reconstruct the final phrase and obtain the final flag.</p>
         <pre><code>curl https://ctf-trpl-wbi.vercel.app/api/level10
-curl "https://ctf-trpl-wbi.vercel.app/api/level10/pieces?ticket=&lt;edited-ticket&gt;"
-curl -X POST https://ctf-trpl-wbi.vercel.app/api/level10/submit \
+curl "https://ctf-trpl-wbi.vercel.app/api/level10?action=pieces&ticket=&lt;edited-ticket&gt;"
+curl -X POST "https://ctf-trpl-wbi.vercel.app/api/level10?action=submit" \
   -H "content-type: application/json" \
   -d '{"answer":"&lt;your-answer&gt;"}'</code></pre>
       </section>
