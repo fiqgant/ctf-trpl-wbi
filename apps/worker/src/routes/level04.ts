@@ -91,7 +91,7 @@ export async function handleLevel04(
 
     const proof = env.L04_EXPECTED_ANSWER;
     const flag = await deriveFlag('L04', proof, env.CTF_FLAG_SALT);
-    return json({ ok: true, flag }, 200, headers);
+    return json({ ok: true, submissionAnswer: proof, flag }, 200, headers);
   }
 
   return json({ error: 'method_not_allowed' }, 405, headers);

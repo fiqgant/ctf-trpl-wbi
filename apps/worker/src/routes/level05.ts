@@ -92,7 +92,7 @@ export async function handleLevel05(
     }
 
     const flag = await deriveFlag('L05', secretPlainText, env.CTF_FLAG_SALT);
-    return json({ ok: true, flag }, 200, headers);
+    return json({ ok: true, submissionAnswer: secretPlainText, flag }, 200, headers);
   }
 
   return json({ error: 'not_found' }, 404, headers);

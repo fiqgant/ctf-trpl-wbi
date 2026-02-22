@@ -113,7 +113,7 @@ export async function handleLevel10(
     }
 
     const flag = await deriveFlag('L10', expectedAnswer, env.CTF_FLAG_SALT);
-    return json({ ok: true, flag }, 200, headers);
+    return json({ ok: true, submissionAnswer: expectedAnswer, flag }, 200, headers);
   }
 
   return json({ error: 'not_found' }, 404, headers);

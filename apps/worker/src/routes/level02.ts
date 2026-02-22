@@ -67,5 +67,5 @@ export async function handleLevel02(
 
   const proof = env.L02_EXPECTED_ANSWER;
   const flag = await deriveFlag('L02', proof, env.CTF_FLAG_SALT);
-  return json({ ok: true, flag }, 200, headers);
+  return json({ ok: true, submissionAnswer: proof, flag }, 200, headers);
 }
