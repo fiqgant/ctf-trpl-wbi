@@ -1,0 +1,4 @@
+2026-01-14T22:10:02Z INFO door=LIB-SOUTH actor=night_guard result=ok
+2026-01-14T22:13:47Z WARN camera=LIB-B1 stream=stutter trace=33f9a4
+2026-01-14T22:15:11Z INFO investigator=oncall note="ROT13: yvoenel-onfrzrag-ybpxre-6020"
+2026-01-14T22:16:53Z INFO archive=sealed incident=LIB-774
